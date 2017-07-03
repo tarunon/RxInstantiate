@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB4FDE701F0A2B1700F12D19 /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4FDE6E1F0A2B1700F12D19 /* TestCell.xib */; };
+		EB4FDE711F0A2B1700F12D19 /* TestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4FDE6F1F0A2B1700F12D19 /* TestViewController.storyboard */; };
+		EB4FDE781F0A2B6C00F12D19 /* Instantiate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */; };
+		EB4FDE791F0A2B6C00F12D19 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */; };
+		EB4FDE7A1F0A2B6C00F12D19 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */; };
+		EB4FDE7B1F0A2B6C00F12D19 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */; };
+		EB4FDE7F1F0A2B7600F12D19 /* InstantiateStandard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */; };
+		OBJ_27 /* Injectable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* Injectable+Rx.swift */; };
+		OBJ_28 /* LazyVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* LazyVariable.swift */; };
+		OBJ_29 /* ReusableMultiple+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ReusableMultiple+Rx.swift */; };
+		OBJ_30 /* ReusableSingle+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* ReusableSingle+Rx.swift */; };
+		OBJ_37 /* RxInstantiateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* RxInstantiateTests.swift */; };
+		OBJ_38 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* TestCell.swift */; };
+		OBJ_39 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* TestViewController.swift */; };
+		OBJ_41 /* RxInstantiate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* RxInstantiate.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB4FDE621F0A2A9700F12D19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = OBJ_22;
+			remoteInfo = RxInstantiate;
+		};
+		EB4FDE681F0A2AD000F12D19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_13;
+			remoteInfo = EnumConvertible;
+		};
+		EB4FDE6A1F0A2AD000F12D19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_14;
+			remoteInfo = EnumConvertibleTests;
+		};
+		EB4FDE801F0A2BB300F12D19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = OBJ_15;
+			remoteInfo = EnumConvertible;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EnumConvertible.xcodeproj; path = "Carthage/Checkouts/enum-convertible/EnumConvertible.xcodeproj"; sourceTree = "<group>"; };
+		EB4FDE6E1F0A2B1700F12D19 /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
+		EB4FDE6F1F0A2B1700F12D19 /* TestViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestViewController.storyboard; sourceTree = "<group>"; };
+		EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = EnumConvertible.xcconfig; path = "Carthage/Checkouts/enum-convertible/EnumConvertible.xcconfig"; sourceTree = "<group>"; };
+		EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Instantiate.framework; path = Carthage/Build/iOS/Instantiate.framework; sourceTree = "<group>"; };
+		EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstantiateStandard.framework; path = Carthage/Build/iOS/InstantiateStandard.framework; sourceTree = "<group>"; };
+		EB4FDE981F0A44EE00F12D19 /* ReusableMultiple+Rx.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ReusableMultiple+Rx.swift.gyb"; sourceTree = "<group>"; };
+		OBJ_10 /* ReusableMultiple+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableMultiple+Rx.swift"; sourceTree = "<group>"; };
+		OBJ_11 /* ReusableSingle+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableSingle+Rx.swift"; sourceTree = "<group>"; };
+		OBJ_14 /* RxInstantiateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxInstantiateTests.swift; sourceTree = "<group>"; };
+		OBJ_15 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		OBJ_16 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		OBJ_17 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = SOURCE_ROOT; };
+		OBJ_20 /* RxInstantiate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxInstantiate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_21 /* RxInstantiateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RxInstantiateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_8 /* Injectable+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injectable+Rx.swift"; sourceTree = "<group>"; };
+		OBJ_9 /* LazyVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyVariable.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				EB4FDE781F0A2B6C00F12D19 /* Instantiate.framework in Frameworks */,
+				EB4FDE791F0A2B6C00F12D19 /* RxCocoa.framework in Frameworks */,
+				EB4FDE7A1F0A2B6C00F12D19 /* RxDataSources.framework in Frameworks */,
+				EB4FDE7B1F0A2B6C00F12D19 /* RxSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_41 /* RxInstantiate.framework in Frameworks */,
+				EB4FDE7F1F0A2B7600F12D19 /* InstantiateStandard.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB4FDE641F0A2AD000F12D19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB4FDE691F0A2AD000F12D19 /* EnumConvertible.framework */,
+				EB4FDE6B1F0A2AD000F12D19 /* EnumConvertibleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB4FDE731F0A2B6C00F12D19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */,
+				EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */,
+				EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */,
+				EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */,
+				EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		OBJ_12 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* RxInstantiateTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_13 /* RxInstantiateTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_14 /* RxInstantiateTests.swift */,
+				EB4FDE6E1F0A2B1700F12D19 /* TestCell.xib */,
+				EB4FDE6F1F0A2B1700F12D19 /* TestViewController.storyboard */,
+				OBJ_15 /* TestCell.swift */,
+				OBJ_16 /* TestViewController.swift */,
+			);
+			name = RxInstantiateTests;
+			path = Tests/RxInstantiateTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_20 /* RxInstantiate.framework */,
+				OBJ_21 /* RxInstantiateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */,
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_12 /* Tests */,
+				OBJ_17 /* Carthage */,
+				OBJ_19 /* Products */,
+				EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */,
+				EB4FDE731F0A2B6C00F12D19 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* Injectable+Rx.swift */,
+				OBJ_9 /* LazyVariable.swift */,
+				OBJ_10 /* ReusableMultiple+Rx.swift */,
+				OBJ_11 /* ReusableSingle+Rx.swift */,
+				EB4FDE981F0A44EE00F12D19 /* ReusableMultiple+Rx.swift.gyb */,
+			);
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		OBJ_22 /* RxInstantiate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_23 /* Build configuration list for PBXNativeTarget "RxInstantiate" */;
+			buildPhases = (
+				EB4FDE6C1F0A2AE300F12D19 /* Run gyb */,
+				OBJ_26 /* Sources */,
+				OBJ_31 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB4FDE811F0A2BB300F12D19 /* PBXTargetDependency */,
+			);
+			name = RxInstantiate;
+			productName = RxInstantiate;
+			productReference = OBJ_20 /* RxInstantiate.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		OBJ_32 /* RxInstantiateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_33 /* Build configuration list for PBXNativeTarget "RxInstantiateTests" */;
+			buildPhases = (
+				OBJ_36 /* Sources */,
+				OBJ_40 /* Frameworks */,
+				EB4FDE6D1F0A2B0500F12D19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_42 /* PBXTargetDependency */,
+			);
+			name = RxInstantiateTests;
+			productName = RxInstantiateTests;
+			productReference = OBJ_21 /* RxInstantiateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "RxInstantiate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5;
+			productRefGroup = OBJ_19 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EB4FDE641F0A2AD000F12D19 /* Products */;
+					ProjectRef = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				OBJ_22 /* RxInstantiate */,
+				OBJ_32 /* RxInstantiateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EB4FDE691F0A2AD000F12D19 /* EnumConvertible.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EnumConvertible.framework;
+			remoteRef = EB4FDE681F0A2AD000F12D19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EB4FDE6B1F0A2AD000F12D19 /* EnumConvertibleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EnumConvertibleTests.xctest;
+			remoteRef = EB4FDE6A1F0A2AD000F12D19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB4FDE6D1F0A2B0500F12D19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4FDE701F0A2B1700F12D19 /* TestCell.xib in Resources */,
+				EB4FDE711F0A2B1700F12D19 /* TestViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EB4FDE6C1F0A2AE300F12D19 /* Run gyb */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run gyb";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! -e \"gyb\" ]; then\nmkdir \"gyb\"\ncurl \"https://raw.githubusercontent.com/apple/swift/master/utils/gyb.py\" -o \"gyb/gyb.py\"\ncurl \"https://raw.githubusercontent.com/apple/swift/master/utils/gyb\" -o \"gyb/gyb\"\nchmod +x gyb/gyb\nfi\n./gyb/gyb Sources/ReusableMultiple+Rx.swift.gyb -o Sources/ReusableMultiple+Rx.swift -D MAX_SERIAL_NUMBER=$MAX_SERIAL_NUMBER -D SPECIFIC_NUMBERS=$SPECIFIC_NUMBERS --line-directive \"\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_27 /* Injectable+Rx.swift in Sources */,
+				OBJ_28 /* LazyVariable.swift in Sources */,
+				OBJ_29 /* ReusableMultiple+Rx.swift in Sources */,
+				OBJ_30 /* ReusableSingle+Rx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_37 /* RxInstantiateTests.swift in Sources */,
+				OBJ_38 /* TestCell.swift in Sources */,
+				OBJ_39 /* TestViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB4FDE811F0A2BB300F12D19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EnumConvertible;
+			targetProxy = EB4FDE801F0A2BB300F12D19 /* PBXContainerItemProxy */;
+		};
+		OBJ_42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = OBJ_22 /* RxInstantiate */;
+			targetProxy = EB4FDE621F0A2A9700F12D19 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = RxInstantiate.xcodeproj/RxInstantiate_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = RxInstantiate;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGET_NAME = RxInstantiate;
+			};
+			name = Debug;
+		};
+		OBJ_25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = RxInstantiate.xcodeproj/RxInstantiate_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = RxInstantiate;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGET_NAME = RxInstantiate;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = RxInstantiate.xcodeproj/RxInstantiateTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = RxInstantiateTests;
+			};
+			name = Debug;
+		};
+		OBJ_35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = RxInstantiate.xcodeproj/RxInstantiateTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = RxInstantiateTests;
+			};
+			name = Release;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "RxInstantiate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_23 /* Build configuration list for PBXNativeTarget "RxInstantiate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_24 /* Debug */,
+				OBJ_25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_33 /* Build configuration list for PBXNativeTarget "RxInstantiateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_34 /* Debug */,
+				OBJ_35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}

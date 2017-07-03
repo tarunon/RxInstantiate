@@ -1,4 +1,4 @@
 github "tarunon/Instantiate"
-github "tarunon/enum-convertible"
+github "tarunon/enum-convertible" "master"
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/RxDataSources"

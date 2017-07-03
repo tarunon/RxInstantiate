@@ -1,0 +1,91 @@
+import Instantiate
+import RxSwift
+import RxCocoa
+import RxDataSources
+import EnumConvertible
+
+%{
+    def join(xs, j=", "):
+        return j.join(xs)
+    def enumerateC(n):
+        return join(["C{}".format(i) for i in range(n)])
+    def enumerateArgsDef(n):
+        return join(["type{}: C{}.Type".format(i, i) for i in range(n)], ", _ ")
+    def enumerateArgs(n):
+        return join(["type{}".format(i) for i in range(n)])
+    enumNumbers = range(2, int(MAX_SERIAL_NUMBER) + 1)
+    if len(SPECIFIC_NUMBERS) > 0:
+        enumNumbers += [int(s) for s in SPECIFIC_NUMBERS.split(',')]
+    viewTypes = ["Table", "Collection"]
+    renderTypes = [("Reload", ""), ("Animated", "Animatable")]
+}%
+
+% for viewType in viewTypes:
+extension Reactive where Base: UI${viewType}View {
+    % for enumNumber in enumNumbers:
+    private func configureCell<${enumerateC(enumNumber)}, X, E>(for ${enumerateArgsDef(enumNumber)})
+        -> (X, UI${viewType}View, IndexPath, E)
+        -> UI${viewType}ViewCell
+        where E: Enum${enumNumber}Convertible
+        % for caseNumber in range(enumNumber):
+        , C${caseNumber}: Reusable
+        , C${caseNumber}: UI${viewType}ViewCell
+        , E.T${caseNumber} == C${caseNumber}.Dependency
+        % end
+    {
+        return { (_, ${viewType.lower()}View, indexPath, item) in
+            switch item.asEnum {
+        % for caseNumber in range(enumNumber):
+            case .case${caseNumber}(let x): return C${caseNumber}.dequeue(from: ${viewType.lower()}View, for: indexPath, with: x)
+        % end
+            }
+        }
+    }
+
+        % for renderType in renderTypes:
+    public func ${renderType[0].lower()}Items<${enumerateC(enumNumber)}, S, O>(for ${enumerateArgsDef(enumNumber)})
+        -> (O)
+        -> (@escaping (Rx${viewType}ViewSectioned${renderType[0]}DataSource<S>) -> ())
+        -> Disposable
+        where S: ${renderType[1]}SectionModelType
+        , O: ObservableType
+        , O.E == [S]
+        , S.Item: Enum${enumNumber}Convertible
+            % for caseNumber in range(enumNumber):
+        , C${caseNumber}: Reusable
+        , C${caseNumber}: UI${viewType}ViewCell
+        , S.Item.T${caseNumber} == C${caseNumber}.Dependency
+            % end
+    {
+        return { (source) in
+            { (configureDataSources) in
+                let dataSource = Rx${viewType}ViewSectioned${renderType[0]}DataSource<S>()
+                dataSource.configureCell = self.configureCell(for: ${enumerateArgs(enumNumber)})
+                configureDataSources(dataSource)
+                return source
+                    .bind(to: self.items(dataSource: dataSource))
+            }
+        }
+    }
+
+    public func ${renderType[0].lower()}Items<${enumerateC(enumNumber)}, S, O>(for ${enumerateArgsDef(enumNumber)})
+        -> (O)
+        -> Disposable
+        where S: ${renderType[1]}SectionModelType
+        , O: ObservableType
+        , O.E == [S]
+        , S.Item: Enum${enumNumber}Convertible
+            % for caseNumber in range(enumNumber):
+        , C${caseNumber}: Reusable
+        , C${caseNumber}: UI${viewType}ViewCell
+        , S.Item.T${caseNumber} == C${caseNumber}.Dependency
+            % end
+    {
+        return { self.${renderType[0].lower()}Items(for: ${enumerateArgs(enumNumber)})($0)({ _ in }) }
+    }
+
+        %end
+    % end
+}
+
+% end

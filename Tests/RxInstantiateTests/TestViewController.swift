@@ -51,9 +51,7 @@ class TestViewController: UIViewController, RxInjectable {
         storage.asDriver()
             .map { $0.dataSources }
             .map { [Section(items: $0)] }
-            .drive(tableView.rx.reloadItems(for: TestCell.self)) { (dataSource) in
-                
-            }
+            .drive(tableView.rx.reloadItems(for: TestCell.self))
             .disposed(by: disposeBag)
     }
 }
