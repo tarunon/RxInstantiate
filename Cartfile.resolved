@@ -1,4 +1,4 @@
 github "ReactiveX/RxSwift" "3.5.0"
 github "RxSwiftCommunity/RxDataSources" "1.0.4"
 github "tarunon/Instantiate" "2.1.0"
-github "tarunon/enum-convertible" "10da8e041c8cd60572efbece7aac487130a9529e"
+github "tarunon/enum-convertible" "0.2.0"

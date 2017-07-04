@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB122D791F0B693200B1AA04 /* EnumConvertible.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB122D781F0B693200B1AA04 /* EnumConvertible.framework */; };
 		EB4FDE701F0A2B1700F12D19 /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4FDE6E1F0A2B1700F12D19 /* TestCell.xib */; };
 		EB4FDE711F0A2B1700F12D19 /* TestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4FDE6F1F0A2B1700F12D19 /* TestViewController.storyboard */; };
 		EB4FDE781F0A2B6C00F12D19 /* Instantiate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */; };
@@ -32,34 +33,12 @@
 			remoteGlobalIDString = OBJ_22;
 			remoteInfo = RxInstantiate;
 		};
-		EB4FDE681F0A2AD000F12D19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_13;
-			remoteInfo = EnumConvertible;
-		};
-		EB4FDE6A1F0A2AD000F12D19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_14;
-			remoteInfo = EnumConvertibleTests;
-		};
-		EB4FDE801F0A2BB300F12D19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = OBJ_15;
-			remoteInfo = EnumConvertible;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EnumConvertible.xcodeproj; path = "Carthage/Checkouts/enum-convertible/EnumConvertible.xcodeproj"; sourceTree = "<group>"; };
+		EB122D781F0B693200B1AA04 /* EnumConvertible.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumConvertible.framework; path = Carthage/Build/iOS/EnumConvertible.framework; sourceTree = "<group>"; };
 		EB4FDE6E1F0A2B1700F12D19 /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		EB4FDE6F1F0A2B1700F12D19 /* TestViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestViewController.storyboard; sourceTree = "<group>"; };
-		EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = EnumConvertible.xcconfig; path = "Carthage/Checkouts/enum-convertible/EnumConvertible.xcconfig"; sourceTree = "<group>"; };
 		EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Instantiate.framework; path = Carthage/Build/iOS/Instantiate.framework; sourceTree = "<group>"; };
 		EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
@@ -85,6 +64,7 @@
 			buildActionMask = 0;
 			files = (
 				EB4FDE781F0A2B6C00F12D19 /* Instantiate.framework in Frameworks */,
+				EB122D791F0B693200B1AA04 /* EnumConvertible.framework in Frameworks */,
 				EB4FDE791F0A2B6C00F12D19 /* RxCocoa.framework in Frameworks */,
 				EB4FDE7A1F0A2B6C00F12D19 /* RxDataSources.framework in Frameworks */,
 				EB4FDE7B1F0A2B6C00F12D19 /* RxSwift.framework in Frameworks */,
@@ -103,18 +83,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EB4FDE641F0A2AD000F12D19 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EB4FDE691F0A2AD000F12D19 /* EnumConvertible.framework */,
-				EB4FDE6B1F0A2AD000F12D19 /* EnumConvertibleTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EB4FDE731F0A2B6C00F12D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB122D781F0B693200B1AA04 /* EnumConvertible.framework */,
 				EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */,
 				EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */,
 				EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */,
@@ -157,13 +129,11 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_12 /* Tests */,
 				OBJ_17 /* Carthage */,
 				OBJ_19 /* Products */,
-				EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */,
 				EB4FDE731F0A2B6C00F12D19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -194,7 +164,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EB4FDE811F0A2BB300F12D19 /* PBXTargetDependency */,
 			);
 			name = RxInstantiate;
 			productName = RxInstantiate;
@@ -237,12 +206,6 @@
 			mainGroup = OBJ_5;
 			productRefGroup = OBJ_19 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = EB4FDE641F0A2AD000F12D19 /* Products */;
-					ProjectRef = EB4FDE631F0A2AD000F12D19 /* EnumConvertible.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				OBJ_22 /* RxInstantiate */,
@@ -250,23 +213,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		EB4FDE691F0A2AD000F12D19 /* EnumConvertible.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = EnumConvertible.framework;
-			remoteRef = EB4FDE681F0A2AD000F12D19 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EB4FDE6B1F0A2AD000F12D19 /* EnumConvertibleTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = EnumConvertibleTests.xctest;
-			remoteRef = EB4FDE6A1F0A2AD000F12D19 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EB4FDE6D1F0A2B0500F12D19 /* Resources */ = {
@@ -283,7 +229,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		EB4FDE6C1F0A2AE300F12D19 /* Run gyb */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -293,7 +239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ ! -e \"gyb\" ]; then\nmkdir \"gyb\"\ncurl \"https://raw.githubusercontent.com/apple/swift/master/utils/gyb.py\" -o \"gyb/gyb.py\"\ncurl \"https://raw.githubusercontent.com/apple/swift/master/utils/gyb\" -o \"gyb/gyb\"\nchmod +x gyb/gyb\nfi\n./gyb/gyb Sources/ReusableMultiple+Rx.swift.gyb -o Sources/ReusableMultiple+Rx.swift -D MAX_SERIAL_NUMBER=$MAX_SERIAL_NUMBER -D SPECIFIC_NUMBERS=$SPECIFIC_NUMBERS --line-directive \"\"";
+			shellScript = "if [ ! -e \"gyb\" ]; then\nmkdir \"gyb\"\ncurl \"https://raw.githubusercontent.com/apple/swift/master/utils/gyb.py\" -o \"gyb/gyb.py\"\ncurl \"https://raw.githubusercontent.com/apple/swift/master/utils/gyb\" -o \"gyb/gyb\"\nchmod +x gyb/gyb\nfi\nif [ \"$ENUM_CONVERTIBLE_MAX_SERIAL_NUMBER\" == \"\" ]; then\nENUM_CONVERTIBLE_MAX_SERIAL_NUMBER=\"5\"\nfi\n./gyb/gyb Sources/ReusableMultiple+Rx.swift.gyb -o Sources/ReusableMultiple+Rx.swift -D MAX_SERIAL_NUMBER=$ENUM_CONVERTIBLE_MAX_SERIAL_NUMBER -D SPECIFIC_NUMBERS=$ENUM_CONVERTIBLE_SPECIFIC_NUMBERS --line-directive \"\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -322,11 +268,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EB4FDE811F0A2BB300F12D19 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EnumConvertible;
-			targetProxy = EB4FDE801F0A2BB300F12D19 /* PBXContainerItemProxy */;
-		};
 		OBJ_42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_22 /* RxInstantiate */;
@@ -381,7 +322,6 @@
 		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -440,7 +380,6 @@
 		};
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB4FDE721F0A2B3500F12D19 /* EnumConvertible.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
