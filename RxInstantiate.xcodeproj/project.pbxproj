@@ -45,6 +45,8 @@
 		EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstantiateStandard.framework; path = Carthage/Build/iOS/InstantiateStandard.framework; sourceTree = "<group>"; };
 		EB4FDE981F0A44EE00F12D19 /* ReusableMultiple+Rx.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ReusableMultiple+Rx.swift.gyb"; sourceTree = "<group>"; };
+		EBC19E261F0B6D4F00895ADF /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		EBC19E271F0B6D5100895ADF /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		OBJ_10 /* ReusableMultiple+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableMultiple+Rx.swift"; sourceTree = "<group>"; };
 		OBJ_11 /* ReusableSingle+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableSingle+Rx.swift"; sourceTree = "<group>"; };
 		OBJ_14 /* RxInstantiateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxInstantiateTests.swift; sourceTree = "<group>"; };
@@ -130,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
+				EBC19E271F0B6D5100895ADF /* Readme.md */,
+				EBC19E261F0B6D4F00895ADF /* LICENSE */,
 				OBJ_7 /* Sources */,
 				OBJ_12 /* Tests */,
 				OBJ_17 /* Carthage */,
