@@ -25,9 +25,39 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -51,8 +81,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -68,9 +125,39 @@ extension Reactive where Base: UITableView {
         return { self.reloadItems(for: type0, type1)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -94,8 +181,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -134,9 +248,39 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -163,8 +307,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -183,9 +354,39 @@ extension Reactive where Base: UITableView {
         return { self.reloadItems(for: type0, type1, type2)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -212,8 +413,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -259,9 +487,39 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -291,8 +549,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -314,9 +599,39 @@ extension Reactive where Base: UITableView {
         return { self.reloadItems(for: type0, type1, type2, type3)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -346,8 +661,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -400,9 +742,39 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -435,8 +807,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -461,9 +860,39 @@ extension Reactive where Base: UITableView {
         return { self.reloadItems(for: type0, type1, type2, type3, type4)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
-        -> (@escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -496,8 +925,35 @@ extension Reactive where Base: UITableView {
         }
     }
 
+    /**
+     Binds sequences of elements to table view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -544,9 +1000,39 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -570,8 +1056,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -587,9 +1100,39 @@ extension Reactive where Base: UICollectionView {
         return { self.reloadItems(for: type0, type1)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -613,8 +1156,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -653,9 +1223,39 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -682,8 +1282,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -702,9 +1329,39 @@ extension Reactive where Base: UICollectionView {
         return { self.reloadItems(for: type0, type1, type2)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -731,8 +1388,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -778,9 +1462,39 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -810,8 +1524,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -833,9 +1574,39 @@ extension Reactive where Base: UICollectionView {
         return { self.reloadItems(for: type0, type1, type2, type3)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -865,8 +1636,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -919,9 +1717,39 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -954,8 +1782,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: SectionModelType
         , O: ObservableType
@@ -980,9 +1835,39 @@ extension Reactive where Base: UICollectionView {
         return { self.reloadItems(for: type0, type1, type2, type3, type4)($0)({ _ in }) }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
-        -> (@escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType
@@ -1015,8 +1900,35 @@ extension Reactive where Base: UICollectionView {
         }
     }
 
+    /**
+     Binds sequences of elements to collection view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            AnimatableSectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            AnimatableSectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
         , O: ObservableType

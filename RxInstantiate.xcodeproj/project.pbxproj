@@ -15,6 +15,12 @@
 		EB4FDE7A1F0A2B6C00F12D19 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */; };
 		EB4FDE7B1F0A2B6C00F12D19 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */; };
 		EB4FDE7F1F0A2B7600F12D19 /* InstantiateStandard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */; };
+		EB682A7E1F0B83F700B1C509 /* EnumConvertible.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB122D781F0B693200B1AA04 /* EnumConvertible.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB682A7F1F0B83F700B1C509 /* InstantiateStandard.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB682A801F0B83F800B1C509 /* Instantiate.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB682A811F0B83F800B1C509 /* RxCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB682A821F0B83F800B1C509 /* RxDataSources.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB682A831F0B83F800B1C509 /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		OBJ_27 /* Injectable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* Injectable+Rx.swift */; };
 		OBJ_28 /* LazyVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* LazyVariable.swift */; };
 		OBJ_29 /* ReusableMultiple+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ReusableMultiple+Rx.swift */; };
@@ -35,6 +41,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EB682A7D1F0B83EC00B1C509 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EB682A7E1F0B83F700B1C509 /* EnumConvertible.framework in CopyFiles */,
+				EB682A7F1F0B83F700B1C509 /* InstantiateStandard.framework in CopyFiles */,
+				EB682A801F0B83F800B1C509 /* Instantiate.framework in CopyFiles */,
+				EB682A811F0B83F800B1C509 /* RxCocoa.framework in CopyFiles */,
+				EB682A821F0B83F800B1C509 /* RxDataSources.framework in CopyFiles */,
+				EB682A831F0B83F800B1C509 /* RxSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		EB122D781F0B693200B1AA04 /* EnumConvertible.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumConvertible.framework; path = Carthage/Build/iOS/EnumConvertible.framework; sourceTree = "<group>"; };
 		EB4FDE6E1F0A2B1700F12D19 /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
@@ -45,6 +69,7 @@
 		EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstantiateStandard.framework; path = Carthage/Build/iOS/InstantiateStandard.framework; sourceTree = "<group>"; };
 		EB4FDE981F0A44EE00F12D19 /* ReusableMultiple+Rx.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ReusableMultiple+Rx.swift.gyb"; sourceTree = "<group>"; };
+		EB682A7C1F0B833C00B1C509 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		EBC19E261F0B6D4F00895ADF /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EBC19E271F0B6D5100895ADF /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		OBJ_10 /* ReusableMultiple+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableMultiple+Rx.swift"; sourceTree = "<group>"; };
@@ -132,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
+				EB682A7C1F0B833C00B1C509 /* .travis.yml */,
 				EBC19E271F0B6D5100895ADF /* Readme.md */,
 				EBC19E261F0B6D4F00895ADF /* LICENSE */,
 				OBJ_7 /* Sources */,
@@ -181,6 +207,7 @@
 				OBJ_36 /* Sources */,
 				OBJ_40 /* Frameworks */,
 				EB4FDE6D1F0A2B0500F12D19 /* Resources */,
+				EB682A7D1F0B83EC00B1C509 /* CopyFiles */,
 			);
 			buildRules = (
 			);

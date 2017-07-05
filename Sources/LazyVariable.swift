@@ -16,11 +16,27 @@ func never<X, Y>(message: String = "") -> (X) -> Y {
     }
 }
 
+/**
+ LazyVariable is a wrapper for `ReplaySubject(1)`.
+ 
+ Unlike `ReplaySubject` it can't terminate with error, and when variable is deallocated
+ it will complete its observable sequence (`asObservable`).
+ */
 public class LazyVariable<E> {
     let _subject = ReplaySubject<E>.create(bufferSize: 1)
     let _lock = NSRecursiveLock()
 
     var _element: E?
+    
+    /**
+     Gets or sets current value of lazy variable.
+     
+     Whenever a new value is set, all the observers are notified of the change.
+     
+     Even if the newly set value is same as the old value, observers are still notified for change.
+     
+     Should set element before get element.
+     */
     public var element: E {
         get {
             _lock.lock()
@@ -42,24 +58,8 @@ public class LazyVariable<E> {
     }
 }
 
-extension LazyVariable: ObserverType {
-    public func on(_ event: Event<E>) {
-        switch event {
-        case .next(let element):
-            self.element = element
-        case .error(let error):
-            #if DEBUG
-                fatalError("\(error)")
-            #else
-                print("Error occured: \(error)")
-            #endif
-        case .completed:
-            break
-        }
-    }
-}
-
-extension LazyVariable: ObservableConvertibleType {
+extension LazyVariable/* : ObservableConvertibleType */ {
+    /// - returns: Canonical interface for push style sequence
     public func asObservable() -> Observable<E> {
         return _subject.asObservable()
     }
@@ -76,5 +76,77 @@ extension LazyVariable {
 extension LazyVariable {
     public func asDriver() -> SharedSequence<DriverSharingStrategy, E> {
         return asSharedSequence()
+    }
+}
+
+extension LazyVariable {
+    internal func asObserver() -> AnyObserver<E> {
+        return AnyObserver { [weak self] (event) in
+            guard let `self`=self else { return }
+            switch event {
+            case .next(let element):
+                self.element = element
+            case .error(let error):
+                #if DEBUG
+                    fatalError("\(error)")
+                #else
+                    print("Error occured: \(error)")
+                #endif
+            case .completed:
+                break
+            }
+        }
+    }
+}
+
+extension Observable {
+    /**
+     Creates new subscription and sends elements to lazy variable.
+     
+     In case error occurs in debug mode, `fatalError` will be raised.
+     In case error occurs in release mode, `error` will be logged.
+     
+     - parameter to: Target lazy variable for sequence elements.
+     - returns: Disposable object that can be used to unsubscribe the observer.
+     */
+    public func bind(to lazyVariable: LazyVariable<Element>) -> Disposable {
+        return bind(to: lazyVariable.asObserver())
+    }
+    
+    /**
+     Creates new subscription and sends elements to lazy variable.
+     
+     In case error occurs in debug mode, `fatalError` will be raised.
+     In case error occurs in release mode, `error` will be logged.
+     
+     - parameter to: Target lazy variable for sequence elements.
+     - returns: Disposable object that can be used to unsubscribe the observer.
+     */
+    public func bind(to lazyVariable: LazyVariable<Element?>) -> Disposable {
+        return bind(to: lazyVariable.asObserver())
+    }
+}
+
+extension SharedSequenceConvertibleType where Self.SharingStrategy == RxCocoa.DriverSharingStrategy {
+    /**
+     Creates new subscription and sends elements to lazy variable.
+     This method can be only called from `MainThread`.
+     
+     - parameter variable: Target lazy variable for sequence elements.
+     - returns: Disposable object that can be used to unsubscribe the observer from the lazy variable.
+     */
+    public func drive(_ lazyVariable: LazyVariable<E>) -> Disposable {
+        return drive(lazyVariable.asObserver())
+    }
+    
+    /**
+     Creates new subscription and sends elements to lazy variable.
+     This method can be only called from `MainThread`.
+     
+     - parameter variable: Target lazy variable for sequence elements.
+     - returns: Disposable object that can be used to unsubscribe the observer from the lazy variable.
+     */
+    public func drive(_ lazyVariable: LazyVariable<E?>) -> Disposable {
+        return drive(lazyVariable.asObserver())
     }
 }

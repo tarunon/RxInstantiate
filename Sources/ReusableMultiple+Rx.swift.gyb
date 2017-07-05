@@ -43,9 +43,39 @@ extension Reactive where Base: UI${viewType}View {
     }
 
         % for renderType in renderTypes:
+    /**
+     Binds sequences of elements to ${viewType.lower()} view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - parameters configureDataSource: Transform generated data source.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            ${renderType[1]}SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            ${renderType[1]}SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: ${viewType.lower()}View.rx.${renderType[0].lower()}Items(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+                // dataSource configuration
+            }
+            .disposed(by: disposeBag)
+     ```
+     */
     public func ${renderType[0].lower()}Items<${enumerateC(enumNumber)}, S, O>(for ${enumerateArgsDef(enumNumber)})
-        -> (O)
-        -> (@escaping (Rx${viewType}ViewSectioned${renderType[0]}DataSource<S>) -> ())
+        -> (_ source: O)
+        -> (_ configureDataSource: @escaping (Rx${viewType}ViewSectioned${renderType[0]}DataSource<S>) -> ())
         -> Disposable
         where S: ${renderType[1]}SectionModelType
         , O: ObservableType
@@ -68,8 +98,35 @@ extension Reactive where Base: UI${viewType}View {
         }
     }
 
+    /**
+     Binds sequences of elements to ${viewType.lower()} view rows using a custom reactive data used to perform the transformation.
+     This method will make data source and retain it for as long as the subscription isn't disposed (result `Disposable` being disposed).
+     In case `source` observable sequence terminates successfully, the data source will present latest element until the subscription isn't disposed.
+     - parameters type: The reusable cell types that should be implemented `Reusable`, and `Dependency` should be equal to `SectionModel.Item.Tn`.
+     - parameters source: Observable sequence of items. The data source item should be implemented `EnumNConvertible`.
+     - returns: Disposable object that ca be used to unbind.
+     
+     Example
+     ```
+        let items = Observable.just([
+            ${renderType[1]}SectionModel(model: "First section", items: [
+                Item.int(1.0),
+                Item.int(2.0),
+                Item.int(3.0)
+                ]),
+            ${renderType[1]}SectionModel(model: "Second section", items: [
+                Item.string("a"),
+                Item.string("b"),
+                Item.string("c")
+                ])
+            ])
+        items
+            .bind(to: ${viewType.lower()}View.rx.${renderType[0].lower()}Items(for: Cell0.self, Cell1.self, ...))
+            .disposed(by: disposeBag)
+     ```
+     */
     public func ${renderType[0].lower()}Items<${enumerateC(enumNumber)}, S, O>(for ${enumerateArgsDef(enumNumber)})
-        -> (O)
+        -> (_ source: O)
         -> Disposable
         where S: ${renderType[1]}SectionModelType
         , O: ObservableType
