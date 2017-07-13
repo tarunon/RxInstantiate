@@ -1,5 +1,5 @@
 //
-//  TestCell.swift
+//  LabelCell.swift
 //  RxInstantiate
 //
 //  Created by ST90872 on 2017/06/28.
@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class TestCell: UITableViewCell, RxInjectable {
+class LabelCell: UITableViewCell, RxInjectable {
     struct Dependency {
         var color: UIColor
         enum Text {
@@ -65,10 +65,10 @@ class TestCell: UITableViewCell, RxInjectable {
     }
 }
 
-extension TestCell: NibType {
+extension LabelCell: NibType {
 
 }
 
-extension TestCell: Reusable {
+extension LabelCell: Reusable {
 
 }

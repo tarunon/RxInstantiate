@@ -99,7 +99,7 @@ extension LazyVariable {
     }
 }
 
-extension Observable {
+extension ObservableType {
     /**
      Creates new subscription and sends elements to lazy variable.
      
@@ -109,7 +109,7 @@ extension Observable {
      - parameter to: Target lazy variable for sequence elements.
      - returns: Disposable object that can be used to unsubscribe the observer.
      */
-    public func bind(to lazyVariable: LazyVariable<Element>) -> Disposable {
+    public func bind(to lazyVariable: LazyVariable<E>) -> Disposable {
         return bind(to: lazyVariable.asObserver())
     }
     
@@ -122,7 +122,7 @@ extension Observable {
      - parameter to: Target lazy variable for sequence elements.
      - returns: Disposable object that can be used to unsubscribe the observer.
      */
-    public func bind(to lazyVariable: LazyVariable<Element?>) -> Disposable {
+    public func bind(to lazyVariable: LazyVariable<E?>) -> Disposable {
         return bind(to: lazyVariable.asObserver())
     }
 }

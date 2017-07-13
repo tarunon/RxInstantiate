@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Test View Controller-->
+        <!--Single Cell Table View Controller-->
         <scene sceneID="LPL-Us-eP3">
             <objects>
-                <viewController id="s1v-f4-pvQ" customClass="TestViewController" customModule="RxInstantiateTests" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="s1v-f4-pvQ" customClass="SingleCellTableViewController" customModule="RxInstantiateTests" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3zb-HL-Rh2"/>
                         <viewControllerLayoutGuide type="bottom" id="cDD-Aw-CiG"/>

@@ -38,17 +38,3 @@ extension RxInjectable {
         storage.element = dependency
     }
 }
-
-// Don't need workaround that force load view. 
-extension StoryboardInstantiatable where Self: UIViewController, Self: RxInjectable {
-    public init(with dependency: Self.Dependency) {
-        let storyboard = (Self.self as StoryboardType.Type).storyboard
-        switch Self.instantiateSource {
-        case .initial:
-            self = storyboard.instantiateInitialViewController() as! Self
-        case .identifier(let identifier):
-            self = storyboard.instantiateViewController(withIdentifier: identifier) as! Self
-        }
-        self.inject(dependency)
-    }
-}

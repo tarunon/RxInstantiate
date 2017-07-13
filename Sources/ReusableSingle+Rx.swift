@@ -11,7 +11,18 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
+public struct DataSourceUpdateMethod {
+    public struct Reload {
+        public static let reload = Reload()
+    }
+
+    public struct Animated {
+        public static let animated = Animated()
+    }
+}
+
 extension Reactive where Base: UITableView {
+
     private func configureCell<C: Reusable, X>(for type: C.Type)
         -> (X, UITableView, IndexPath, C.Dependency)
         -> UITableViewCell
@@ -51,13 +62,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell.self)) { (dataSource) in
+            .bind(to: tableView.rx.items(.reload, for: Cell.self)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<S: SectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: SectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Reload, for type: C.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -105,13 +116,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell.self)) { (dataSource) in
+            .bind(to: tableView.rx.items(.animated, for: Cell.self)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Animated, for type: C.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -162,14 +173,14 @@ extension Reactive where Base: UITableView {
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<S: SectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: SectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Reload, for type: C.Type)
         -> (O)
         -> Disposable
         where C: UITableViewCell
         , S.Item == C.Dependency
         , O.E == [S]
     {
-        return { self.reloadItems(for: type)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type)($0)({ _ in }) }
     }
     
     /**
@@ -200,22 +211,23 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell.self))
+            .bind(to: tableView.rx.items(.animated, for: Cell.self))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Animated, for type: C.Type)
         -> (O)
         -> Disposable
         where C: UITableViewCell
         , S.Item == C.Dependency
         , O.E == [S]
     {
-        return { self.animatedItems(for: type)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type)($0)({ _ in }) }
     }
 }
 
 extension Reactive where Base: UICollectionView {
+
     private func configureCell<C: Reusable, X>(for type: C.Type)
         -> (X, UICollectionView, IndexPath, C.Dependency)
         -> UICollectionViewCell
@@ -255,13 +267,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell.self)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.reload, for: Cell.self)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<S: SectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: SectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Reload, for type: C.Type)
         -> (O)
         -> (@escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -309,13 +321,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell.self)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.animated, for: Cell.self)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Animated, for type: C.Type)
         -> (O)
         -> (@escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -366,14 +378,14 @@ extension Reactive where Base: UICollectionView {
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<S: SectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: SectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Reload, for type: C.Type)
         -> (O)
         -> Disposable
         where C: UICollectionViewCell
         , S.Item == C.Dependency
         , O.E == [S]
     {
-        return { self.reloadItems(for: type)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type)($0)({ _ in }) }
     }
     
     /**
@@ -408,13 +420,13 @@ extension Reactive where Base: UICollectionView {
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(for type: C.Type)
+    public func items<S: AnimatableSectionModelType, O: ObservableType, C: Reusable>(_ updateMethod: DataSourceUpdateMethod.Animated, for type: C.Type)
         -> (O)
         -> Disposable
         where C: UICollectionViewCell
         , S.Item == C.Dependency
         , O.E == [S]
     {
-        return { self.animatedItems(for: type)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type)($0)({ _ in }) }
     }
 }

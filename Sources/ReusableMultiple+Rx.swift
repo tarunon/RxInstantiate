@@ -49,13 +49,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -104,11 +104,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -122,7 +122,7 @@ extension Reactive where Base: UITableView {
         , C1: UITableViewCell
         , S.Item.T1 == C1.Dependency
     {
-        return { self.reloadItems(for: type0, type1)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1)($0)({ _ in }) }
     }
 
     /**
@@ -149,13 +149,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -204,11 +204,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -222,7 +222,7 @@ extension Reactive where Base: UITableView {
         , C1: UITableViewCell
         , S.Item.T1 == C1.Dependency
     {
-        return { self.animatedItems(for: type0, type1)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1)($0)({ _ in }) }
     }
 
     private func configureCell<C0, C1, C2, X, E>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
@@ -272,13 +272,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -330,11 +330,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -351,7 +351,7 @@ extension Reactive where Base: UITableView {
         , C2: UITableViewCell
         , S.Item.T2 == C2.Dependency
     {
-        return { self.reloadItems(for: type0, type1, type2)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2)($0)({ _ in }) }
     }
 
     /**
@@ -378,13 +378,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -436,11 +436,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -457,7 +457,7 @@ extension Reactive where Base: UITableView {
         , C2: UITableViewCell
         , S.Item.T2 == C2.Dependency
     {
-        return { self.animatedItems(for: type0, type1, type2)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2)($0)({ _ in }) }
     }
 
     private func configureCell<C0, C1, C2, C3, X, E>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
@@ -511,13 +511,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -572,11 +572,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -596,7 +596,7 @@ extension Reactive where Base: UITableView {
         , C3: UITableViewCell
         , S.Item.T3 == C3.Dependency
     {
-        return { self.reloadItems(for: type0, type1, type2, type3)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3)($0)({ _ in }) }
     }
 
     /**
@@ -623,13 +623,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -684,11 +684,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -708,7 +708,7 @@ extension Reactive where Base: UITableView {
         , C3: UITableViewCell
         , S.Item.T3 == C3.Dependency
     {
-        return { self.animatedItems(for: type0, type1, type2, type3)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3)($0)({ _ in }) }
     }
 
     private func configureCell<C0, C1, C2, C3, C4, X, E>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
@@ -766,13 +766,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -830,11 +830,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -857,7 +857,7 @@ extension Reactive where Base: UITableView {
         , C4: UITableViewCell
         , S.Item.T4 == C4.Dependency
     {
-        return { self.reloadItems(for: type0, type1, type2, type3, type4)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3, type4)($0)({ _ in }) }
     }
 
     /**
@@ -884,13 +884,13 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxTableViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -948,11 +948,11 @@ extension Reactive where Base: UITableView {
                 ])
             ])
         items
-            .bind(to: tableView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: tableView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -975,7 +975,7 @@ extension Reactive where Base: UITableView {
         , C4: UITableViewCell
         , S.Item.T4 == C4.Dependency
     {
-        return { self.animatedItems(for: type0, type1, type2, type3, type4)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3, type4)($0)({ _ in }) }
     }
 
 }
@@ -1024,13 +1024,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -1079,11 +1079,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -1097,7 +1097,7 @@ extension Reactive where Base: UICollectionView {
         , C1: UICollectionViewCell
         , S.Item.T1 == C1.Dependency
     {
-        return { self.reloadItems(for: type0, type1)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1)($0)({ _ in }) }
     }
 
     /**
@@ -1124,13 +1124,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -1179,11 +1179,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, S, O>(for type0: C0.Type, _ type1: C1.Type)
+    public func items<C0, C1, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -1197,7 +1197,7 @@ extension Reactive where Base: UICollectionView {
         , C1: UICollectionViewCell
         , S.Item.T1 == C1.Dependency
     {
-        return { self.animatedItems(for: type0, type1)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1)($0)({ _ in }) }
     }
 
     private func configureCell<C0, C1, C2, X, E>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
@@ -1247,13 +1247,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -1305,11 +1305,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -1326,7 +1326,7 @@ extension Reactive where Base: UICollectionView {
         , C2: UICollectionViewCell
         , S.Item.T2 == C2.Dependency
     {
-        return { self.reloadItems(for: type0, type1, type2)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2)($0)({ _ in }) }
     }
 
     /**
@@ -1353,13 +1353,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -1411,11 +1411,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
+    public func items<C0, C1, C2, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -1432,7 +1432,7 @@ extension Reactive where Base: UICollectionView {
         , C2: UICollectionViewCell
         , S.Item.T2 == C2.Dependency
     {
-        return { self.animatedItems(for: type0, type1, type2)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2)($0)({ _ in }) }
     }
 
     private func configureCell<C0, C1, C2, C3, X, E>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
@@ -1486,13 +1486,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -1547,11 +1547,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -1571,7 +1571,7 @@ extension Reactive where Base: UICollectionView {
         , C3: UICollectionViewCell
         , S.Item.T3 == C3.Dependency
     {
-        return { self.reloadItems(for: type0, type1, type2, type3)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3)($0)({ _ in }) }
     }
 
     /**
@@ -1598,13 +1598,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -1659,11 +1659,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
+    public func items<C0, C1, C2, C3, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -1683,7 +1683,7 @@ extension Reactive where Base: UICollectionView {
         , C3: UICollectionViewCell
         , S.Item.T3 == C3.Dependency
     {
-        return { self.animatedItems(for: type0, type1, type2, type3)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3)($0)({ _ in }) }
     }
 
     private func configureCell<C0, C1, C2, C3, C4, X, E>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
@@ -1741,13 +1741,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedReloadDataSource<S>) -> ())
         -> Disposable
@@ -1805,11 +1805,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.reloadItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.reload, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func reloadItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Reload, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> Disposable
         where S: SectionModelType
@@ -1832,7 +1832,7 @@ extension Reactive where Base: UICollectionView {
         , C4: UICollectionViewCell
         , S.Item.T4 == C4.Dependency
     {
-        return { self.reloadItems(for: type0, type1, type2, type3, type4)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3, type4)($0)({ _ in }) }
     }
 
     /**
@@ -1859,13 +1859,13 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...)) { (dataSource) in
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...)) { (dataSource) in
                 // dataSource configuration
             }
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> (_ configureDataSource: @escaping (RxCollectionViewSectionedAnimatedDataSource<S>) -> ())
         -> Disposable
@@ -1923,11 +1923,11 @@ extension Reactive where Base: UICollectionView {
                 ])
             ])
         items
-            .bind(to: collectionView.rx.animatedItems(for: Cell0.self, Cell1.self, ...))
+            .bind(to: collectionView.rx.items(.animated, for: Cell0.self, Cell1.self, ...))
             .disposed(by: disposeBag)
      ```
      */
-    public func animatedItems<C0, C1, C2, C3, C4, S, O>(for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
+    public func items<C0, C1, C2, C3, C4, S, O>(_ updateMethod: DataSourceUpdateMethod.Animated, for type0: C0.Type, _ type1: C1.Type, _ type2: C2.Type, _ type3: C3.Type, _ type4: C4.Type)
         -> (_ source: O)
         -> Disposable
         where S: AnimatableSectionModelType
@@ -1950,7 +1950,7 @@ extension Reactive where Base: UICollectionView {
         , C4: UICollectionViewCell
         , S.Item.T4 == C4.Dependency
     {
-        return { self.animatedItems(for: type0, type1, type2, type3, type4)($0)({ _ in }) }
+        return { self.items(updateMethod, for: type0, type1, type2, type3, type4)($0)({ _ in }) }
     }
 
 }
