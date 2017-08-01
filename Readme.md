@@ -6,8 +6,8 @@ Useful protocols and default implementation using [RxSwift](https://github.com/R
 No Error `ReplaySubject(1)` wrapper. Don't need to inital value when init `LazyVariable`, but should set value before get value.
 
 ## RxInjectable
-Actual view/viewController may have own DataStore. In this case, it useful that using `LazyVariable`.
-`RxInjectable` have default implementation of `func inject` that injecting value to `LazyVariable`. It mean view/viewController that implemented `Instantiatable` and `RxInjectable` is require only binding from `LazyVariable`.
+Actual view/viewController may have own ViewModel. In this case, `ViewModel` should be Injectable that has same Dependency of view/viewController, maybe useful that using LazyVariable. 
+`RxInjectable` have default implementation of `func inject` that injecting value to ViewModel. It mean view/viewController that implemented `Instantiatable` and `RxInjectable` is require only binding with `ViewModel`.
 
 ## RxDataSources extensions
 The cell type that implemented `Reusable`, can make default implementation of reuse cell and data binding.
