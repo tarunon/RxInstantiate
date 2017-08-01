@@ -12,12 +12,12 @@ import RxSwift
 import RxCocoa
 
 /**
- RxInjectable has general `inject` function implementation that bind own viewModel. ViewModel should be Injectable that has same Dependency.
+ RxViewProtocol has general `inject` function implementation that bind own viewModel. ViewModel should be Injectable that has same Dependency.
  
  Example
  ```
     // Notes: `MyViewController.init(with: "Hello")` make MyViewController instance that inject "Hello" into `MyViewController.viewModel`.
-    class MyViewController: StoryboardInstantiatable, RxInjectable {
+    class MyViewController: StoryboardInstantiatable, RxViewProtocol {
         let viewModel = LazyVariable<String>()
         let disposeBag = DisposeBag()
  
@@ -29,12 +29,12 @@ import RxCocoa
     }
  ```
  */
-public protocol RxInjectable: Injectable {
+public protocol RxViewProtocol: Injectable {
     associatedtype ViewModel: Injectable
     var viewModel: ViewModel { get }
 }
 
-extension RxInjectable where ViewModel.Dependency == Dependency {
+extension RxViewProtocol where ViewModel.Dependency == Dependency {
     public func inject(_ dependency: Dependency) {
         viewModel.inject(dependency)
     }

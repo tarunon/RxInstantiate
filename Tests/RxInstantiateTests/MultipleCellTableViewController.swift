@@ -15,7 +15,7 @@ import RxCocoa
 import RxDataSources
 import EnumConvertible
 
-class MultipleCellTableViewController: UIViewController, RxInjectable {
+class MultipleCellTableViewController: UIViewController, RxViewProtocol {
     struct Dependency {
         enum CellModel: Enum3Convertible {
             case label(LabelCell.Dependency)

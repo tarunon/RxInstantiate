@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class SwitchCell: UITableViewCell, RxInjectable {
+class SwitchCell: UITableViewCell, RxViewProtocol {
     typealias Dependency = Bool
     var viewModel = LazyVariable<Bool>()
     let disposeBag = DisposeBag()

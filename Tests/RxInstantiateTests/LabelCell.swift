@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class LabelCell: UITableViewCell, RxInjectable {
+class LabelCell: UITableViewCell, RxViewProtocol {
     struct Dependency {
         var color: UIColor
         enum Text {

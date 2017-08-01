@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class SliderCell: UITableViewCell, RxInjectable {
+class SliderCell: UITableViewCell, RxViewProtocol {
     typealias Dependency = Float
     var viewModel = LazyVariable<Float>()
     let disposeBag = DisposeBag()

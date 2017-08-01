@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class SingleCellTableViewController: UIViewController, RxInjectable {
+class SingleCellTableViewController: UIViewController, RxViewProtocol {
     struct Dependency {
         var title: String
         var dataSources: [LabelCell.Dependency]
