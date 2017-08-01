@@ -12,17 +12,17 @@ import RxSwift
 import RxCocoa
 
 /**
- RxInjectable has general `inject` function implementation that bind own storage.
+ RxInjectable has general `inject` function implementation that bind own viewModel. ViewModel should be Injectable that has same Dependency.
  
  Example
  ```
-    // Notes: `MyViewController.init(with: "Hello")` make MyViewController instance that bind "Hello" into `MyViewController.storage`.
+    // Notes: `MyViewController.init(with: "Hello")` make MyViewController instance that inject "Hello" into `MyViewController.viewModel`.
     class MyViewController: StoryboardInstantiatable, RxInjectable {
-        let storage = LazyVariable<String>()
+        let viewModel = LazyVariable<String>()
         let disposeBag = DisposeBag()
  
         override func viewDidLoad() {
-            storage.asObservable()
+            viewModel.asObservable()
                 .bind(to: self.rx.title)
                 .disposed(by: disposeBag)
         }
@@ -30,11 +30,12 @@ import RxCocoa
  ```
  */
 public protocol RxInjectable: Injectable {
-    var storage: LazyVariable<Dependency> { get }
+    associatedtype ViewModel: Injectable
+    var viewModel: ViewModel { get }
 }
 
-extension RxInjectable {
+extension RxInjectable where ViewModel.Dependency == Dependency {
     public func inject(_ dependency: Dependency) {
-        storage.element = dependency
+        viewModel.inject(dependency)
     }
 }

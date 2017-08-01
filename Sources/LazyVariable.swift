@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Instantiate
 
 func never<X, Y>(message: String = "") -> (X) -> Y {
     return { _ in
@@ -96,6 +97,13 @@ extension LazyVariable {
                 break
             }
         }
+    }
+}
+
+extension LazyVariable: Injectable {
+    public typealias Dependency = E
+    public func inject(_ dependency: E) {
+        self.element = dependency
     }
 }
 

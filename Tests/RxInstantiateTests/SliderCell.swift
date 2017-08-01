@@ -16,14 +16,14 @@ import RxDataSources
 
 class SliderCell: UITableViewCell, RxInjectable {
     typealias Dependency = Float
-    var storage = LazyVariable<Float>()
+    var viewModel = LazyVariable<Float>()
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var slider: UISlider!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        storage.asDriver()
+        viewModel.asDriver()
             .drive(slider.rx.value)
             .disposed(by: disposeBag)
     }

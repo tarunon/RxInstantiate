@@ -22,7 +22,7 @@ class MultipleCellTableViewController: UIViewController, RxInjectable {
             case `switch`(SwitchCell.Dependency)
             case slider(SliderCell.Dependency)
 
-            var asEnum: Enum3<LabelCell.Dependency, SwitchCell.Dependency, SliderCell.Dependency> {
+            var asEnum: AnyEnum3<LabelCell.Dependency, SwitchCell.Dependency, SliderCell.Dependency> {
                 switch self {
                 case .label(let x): return .case0(x)
                 case .switch(let x): return .case1(x)
@@ -45,7 +45,7 @@ class MultipleCellTableViewController: UIViewController, RxInjectable {
         }
     }
 
-    var storage = LazyVariable<Dependency>()
+    var viewModel = LazyVariable<Dependency>()
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var tableView: UITableView!
@@ -58,7 +58,7 @@ class MultipleCellTableViewController: UIViewController, RxInjectable {
         tableView.registerNib(type: SwitchCell.self)
         tableView.registerNib(type: SliderCell.self)
         
-        storage.asDriver()
+        viewModel.asDriver()
             .map { $0.dataSources }
             .map { [Section(items: $0)] }
             .drive(tableView.rx.items(.reload, for: LabelCell.self, SwitchCell.self, SliderCell.self))

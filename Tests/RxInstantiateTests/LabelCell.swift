@@ -37,14 +37,14 @@ class LabelCell: UITableViewCell, RxInjectable {
         }
         var text: Text
     }
-    var storage = LazyVariable<Dependency>()
+    var viewModel = LazyVariable<Dependency>()
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        storage.asDriver()
+        viewModel.asDriver()
             .map { $0.color }
             .drive(
                 onNext: { [weak self] (color) in
@@ -53,12 +53,12 @@ class LabelCell: UITableViewCell, RxInjectable {
             )
             .disposed(by: disposeBag)
 
-        storage.asDriver()
+        viewModel.asDriver()
             .flatMap { Driver.from(optional: $0.text.string) }
             .drive(self.label.rx.text)
             .disposed(by: disposeBag)
 
-        storage.asDriver()
+        viewModel.asDriver()
             .flatMap { Driver.from(optional: $0.text.attributedString) }
             .drive(self.label.rx.attributedText)
             .disposed(by: disposeBag)

@@ -16,14 +16,14 @@ import RxDataSources
 
 class SwitchCell: UITableViewCell, RxInjectable {
     typealias Dependency = Bool
-    var storage = LazyVariable<Bool>()
+    var viewModel = LazyVariable<Bool>()
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var `switch`: UISwitch!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        storage.asDriver()
+        viewModel.asDriver()
             .drive(`switch`.rx.isOn)
             .disposed(by: disposeBag)
     }

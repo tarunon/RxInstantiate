@@ -32,7 +32,7 @@ class SingleCellTableViewController: UIViewController, RxInjectable {
         }
     }
 
-    var storage = LazyVariable<Dependency>()
+    var viewModel = LazyVariable<Dependency>()
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var tableView: UITableView!
@@ -43,12 +43,12 @@ class SingleCellTableViewController: UIViewController, RxInjectable {
         tableView.estimatedRowHeight = 44.0
         tableView.registerNib(type: LabelCell.self)
 
-        storage.asDriver()
+        viewModel.asDriver()
             .map { $0.title }
             .drive(self.rx.title)
             .disposed(by: disposeBag)
 
-        storage.asDriver()
+        viewModel.asDriver()
             .map { $0.dataSources }
             .map { [Section(items: $0)] }
             .drive(tableView.rx.items(.reload, for: LabelCell.self))
