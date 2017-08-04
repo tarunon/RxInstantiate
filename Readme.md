@@ -14,11 +14,11 @@ The cell type that implemented `Reusable`, can make default implementation of re
 RxInstantiate take function that generate RxDataSource instance.
 
 ### 1TableView(CollectionView) - 1Cell case
-`observable.bind(to: tableView.rx.reloadDataSource(for: Cell.self))` is same of make `RxTableViewSectionedReloadDataSource` instance and setup `configureCell`.
+`observable.bind(to: tableView.rx.items(.reload, for: Cell.self))` is same of make `RxTableViewSectionedReloadDataSource` instance and setup `configureCell`.
 The observable value type should be `[SectionModelType]` and the `SectionModelType.Item` should be equal to `Cell.Dependency`.
 
 ### 1TableView(CollectionView) - nCell case (2≤n≤5)
-`observable.bind(to: tableView.rx.reloadDataSource(for: Cell1.self, Cell2.self, ...))` is same of make `RxTableViewSectionedReloadDataSource` instance and setup `configureCell`.
+`observable.bind(to: tableView.rx.items(.reload, for: Cell1.self, Cell2.self, ...))` is same of make `RxTableViewSectionedReloadDataSource` instance and setup `configureCell`.
 The observable value type should be `[SectionModelType]` and the `SectionModelType.Item` should implement `EnumNConvertible` and there case type should be equal to `Cell1.Dependency` , `Cell2.Dependency` and so on.
 
 #### Needs 6 or more Cell...
