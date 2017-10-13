@@ -17,16 +17,16 @@ import RxDataSources
 class SingleCellTableViewController: UIViewController, RxViewProtocol {
     struct Dependency {
         var title: String
-        var dataSources: [LabelCell.Dependency]
+        var dataSources: [LabelTableViewCell.Dependency]
     }
 
     struct Section: SectionModelType {
-        var items: [LabelCell.Dependency]
-        init(items: [LabelCell.Dependency]) {
+        var items: [LabelTableViewCell.Dependency]
+        init(items: [LabelTableViewCell.Dependency]) {
             self.items = items
         }
 
-        init(original: Section, items: [LabelCell.Dependency]) {
+        init(original: Section, items: [LabelTableViewCell.Dependency]) {
             self = original
             self.items = items
         }
@@ -41,7 +41,7 @@ class SingleCellTableViewController: UIViewController, RxViewProtocol {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44.0
-        tableView.registerNib(type: LabelCell.self)
+        tableView.registerNib(type: LabelTableViewCell.self)
 
         viewModel.asDriver()
             .map { $0.title }
@@ -51,7 +51,7 @@ class SingleCellTableViewController: UIViewController, RxViewProtocol {
         viewModel.asDriver()
             .map { $0.dataSources }
             .map { [Section(items: $0)] }
-            .drive(tableView.rx.items(.reload, for: LabelCell.self))
+            .drive(tableView.rx.items(.reload, for: LabelTableViewCell.self))
             .disposed(by: disposeBag)
     }
 }

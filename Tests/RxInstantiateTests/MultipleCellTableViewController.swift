@@ -18,11 +18,11 @@ import EnumConvertible
 class MultipleCellTableViewController: UIViewController, RxViewProtocol {
     struct Dependency {
         enum CellModel: Enum3Convertible {
-            case label(LabelCell.Dependency)
-            case `switch`(SwitchCell.Dependency)
-            case slider(SliderCell.Dependency)
+            case label(LabelCollectionViewCell.Dependency)
+            case `switch`(SwitchCollectionViewCell.Dependency)
+            case slider(SliderCollectionViewCell.Dependency)
 
-            var asEnum: AnyEnum3<LabelCell.Dependency, SwitchCell.Dependency, SliderCell.Dependency> {
+            var asEnum: AnyEnum3<LabelCollectionViewCell.Dependency, SwitchCollectionViewCell.Dependency, SliderCollectionViewCell.Dependency> {
                 switch self {
                 case .label(let x): return .case0(x)
                 case .switch(let x): return .case1(x)
@@ -48,20 +48,18 @@ class MultipleCellTableViewController: UIViewController, RxViewProtocol {
     var viewModel = LazyVariable<Dependency>()
     let disposeBag = DisposeBag()
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44.0
-        tableView.registerNib(type: LabelCell.self)
-        tableView.registerNib(type: SwitchCell.self)
-        tableView.registerNib(type: SliderCell.self)
+        collectionView.registerNib(type: LabelCollectionViewCell.self)
+        collectionView.registerNib(type: SwitchCollectionViewCell.self)
+        collectionView.registerNib(type: SliderCollectionViewCell.self)
         
         viewModel.asDriver()
             .map { $0.dataSources }
             .map { [Section(items: $0)] }
-            .drive(tableView.rx.items(.reload, for: LabelCell.self, SwitchCell.self, SliderCell.self))
+            .drive(collectionView.rx.items(.reload, for: LabelCollectionViewCell.self, SwitchCollectionViewCell.self, SliderCollectionViewCell.self))
             .disposed(by: disposeBag)
     }
 }

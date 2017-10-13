@@ -1,5 +1,5 @@
 //
-//  SwitchCell.swift
+//  SliderCell.swift
 //  RxInstantiate
 //
 //  Created by ST90872 on 2017/07/13.
@@ -14,25 +14,25 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class SwitchCell: UITableViewCell, RxViewProtocol {
-    typealias Dependency = Bool
-    var viewModel = LazyVariable<Bool>()
+class SliderCollectionViewCell: UICollectionViewCell, RxViewProtocol {
+    typealias Dependency = Float
+    var viewModel = LazyVariable<Float>()
     let disposeBag = DisposeBag()
 
-    @IBOutlet weak var `switch`: UISwitch!
+    @IBOutlet weak var slider: UISlider!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         viewModel.asDriver()
-            .drive(`switch`.rx.isOn)
+            .drive(slider.rx.value)
             .disposed(by: disposeBag)
     }
 }
 
-extension SwitchCell: NibType {
+extension SliderCollectionViewCell: NibType {
 
 }
 
-extension SwitchCell: Reusable {
-
+extension SliderCollectionViewCell: Reusable {
+    
 }

@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class LabelCell: UITableViewCell, RxViewProtocol {
+class LabelCollectionViewCell: UICollectionViewCell, RxViewProtocol {
     struct Dependency {
         var color: UIColor
         enum Text {
@@ -41,7 +41,7 @@ class LabelCell: UITableViewCell, RxViewProtocol {
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var label: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         viewModel.asDriver()
@@ -65,10 +65,11 @@ class LabelCell: UITableViewCell, RxViewProtocol {
     }
 }
 
-extension LabelCell: NibType {
+extension LabelCollectionViewCell: NibType {
 
 }
 
-extension LabelCell: Reusable {
+extension LabelCollectionViewCell: Reusable {
 
 }
+

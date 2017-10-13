@@ -7,32 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2D46D431F90BF0500BB43CA /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D46D421F90BEF900BB43CA /* Differentiator.framework */; };
+		D2D46D441F90C3B700BB43CA /* Differentiator.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2D46D421F90BEF900BB43CA /* Differentiator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2D46D481F90C50400BB43CA /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D46D461F90C4ED00BB43CA /* LabelCollectionViewCell.swift */; };
+		D2D46D491F90C5D200BB43CA /* LabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D46D451F90C4C800BB43CA /* LabelCollectionViewCell.xib */; };
 		EB122D791F0B693200B1AA04 /* EnumConvertible.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB122D781F0B693200B1AA04 /* EnumConvertible.framework */; };
-		EB4FDE701F0A2B1700F12D19 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4FDE6E1F0A2B1700F12D19 /* LabelCell.xib */; };
+		EB4FDE701F0A2B1700F12D19 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4FDE6E1F0A2B1700F12D19 /* LabelTableViewCell.xib */; };
 		EB4FDE711F0A2B1700F12D19 /* SingleCellTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4FDE6F1F0A2B1700F12D19 /* SingleCellTableViewController.storyboard */; };
 		EB4FDE781F0A2B6C00F12D19 /* Instantiate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */; };
 		EB4FDE791F0A2B6C00F12D19 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */; };
 		EB4FDE7A1F0A2B6C00F12D19 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */; };
 		EB4FDE7B1F0A2B6C00F12D19 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */; };
 		EB4FDE7F1F0A2B7600F12D19 /* InstantiateStandard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */; };
-		EB5C8A791F176B2700A3740D /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C8A771F176B1E00A3740D /* SwitchCell.swift */; };
-		EB5C8A7A1F176B2900A3740D /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5C8A761F176AFB00A3740D /* SwitchCell.xib */; };
+		EB5C8A791F176B2700A3740D /* SwitchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C8A771F176B1E00A3740D /* SwitchCollectionViewCell.swift */; };
+		EB5C8A7A1F176B2900A3740D /* SwitchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5C8A761F176AFB00A3740D /* SwitchCollectionViewCell.xib */; };
 		EB682A7E1F0B83F700B1C509 /* EnumConvertible.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB122D781F0B693200B1AA04 /* EnumConvertible.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB682A7F1F0B83F700B1C509 /* InstantiateStandard.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB682A801F0B83F800B1C509 /* Instantiate.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB682A811F0B83F800B1C509 /* RxCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB682A821F0B83F800B1C509 /* RxDataSources.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE761F0A2B6C00F12D19 /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB682A831F0B83F800B1C509 /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EB6FD6771F176E2F0069220A /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FD6761F176E2F0069220A /* SliderCell.swift */; };
+		EB6FD6771F176E2F0069220A /* SliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FD6761F176E2F0069220A /* SliderCollectionViewCell.swift */; };
 		EB6FD6791F176EEC0069220A /* MultipleCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FD6781F176EEC0069220A /* MultipleCellTableViewController.swift */; };
 		EB6FD67B1F17707A0069220A /* MultipleCellTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6FD67A1F17707A0069220A /* MultipleCellTableViewController.storyboard */; };
-		EB6FD67C1F1774390069220A /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6FD6751F176E0B0069220A /* SliderCell.xib */; };
+		EB6FD67C1F1774390069220A /* SliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6FD6751F176E0B0069220A /* SliderCollectionViewCell.xib */; };
 		OBJ_27 /* Injectable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* Injectable+Rx.swift */; };
 		OBJ_28 /* LazyVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* LazyVariable.swift */; };
 		OBJ_29 /* ReusableMultiple+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ReusableMultiple+Rx.swift */; };
 		OBJ_30 /* ReusableSingle+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* ReusableSingle+Rx.swift */; };
 		OBJ_37 /* RxInstantiateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* RxInstantiateTests.swift */; };
-		OBJ_38 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* LabelCell.swift */; };
+		OBJ_38 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* LabelTableViewCell.swift */; };
 		OBJ_39 /* SingleCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* SingleCellTableViewController.swift */; };
 		OBJ_41 /* RxInstantiate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* RxInstantiate.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D2D46D441F90C3B700BB43CA /* Differentiator.framework in CopyFiles */,
 				EB682A7E1F0B83F700B1C509 /* EnumConvertible.framework in CopyFiles */,
 				EB682A7F1F0B83F700B1C509 /* InstantiateStandard.framework in CopyFiles */,
 				EB682A801F0B83F800B1C509 /* Instantiate.framework in CopyFiles */,
@@ -66,8 +71,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D2D46D421F90BEF900BB43CA /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
+		D2D46D451F90C4C800BB43CA /* LabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewCell.xib; sourceTree = "<group>"; };
+		D2D46D461F90C4ED00BB43CA /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB122D781F0B693200B1AA04 /* EnumConvertible.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EnumConvertible.framework; path = Carthage/Build/iOS/EnumConvertible.framework; sourceTree = "<group>"; };
-		EB4FDE6E1F0A2B1700F12D19 /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
+		EB4FDE6E1F0A2B1700F12D19 /* LabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
 		EB4FDE6F1F0A2B1700F12D19 /* SingleCellTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SingleCellTableViewController.storyboard; sourceTree = "<group>"; };
 		EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Instantiate.framework; path = Carthage/Build/iOS/Instantiate.framework; sourceTree = "<group>"; };
 		EB4FDE751F0A2B6C00F12D19 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -75,11 +83,11 @@
 		EB4FDE771F0A2B6C00F12D19 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstantiateStandard.framework; path = Carthage/Build/iOS/InstantiateStandard.framework; sourceTree = "<group>"; };
 		EB4FDE981F0A44EE00F12D19 /* ReusableMultiple+Rx.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ReusableMultiple+Rx.swift.gyb"; sourceTree = "<group>"; };
-		EB5C8A761F176AFB00A3740D /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
-		EB5C8A771F176B1E00A3740D /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		EB5C8A761F176AFB00A3740D /* SwitchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCollectionViewCell.xib; sourceTree = "<group>"; };
+		EB5C8A771F176B1E00A3740D /* SwitchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB682A7C1F0B833C00B1C509 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
-		EB6FD6751F176E0B0069220A /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
-		EB6FD6761F176E2F0069220A /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
+		EB6FD6751F176E0B0069220A /* SliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCollectionViewCell.xib; sourceTree = "<group>"; };
+		EB6FD6761F176E2F0069220A /* SliderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB6FD6781F176EEC0069220A /* MultipleCellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleCellTableViewController.swift; sourceTree = "<group>"; };
 		EB6FD67A1F17707A0069220A /* MultipleCellTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MultipleCellTableViewController.storyboard; sourceTree = "<group>"; };
 		EBC19E261F0B6D4F00895ADF /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -87,7 +95,7 @@
 		OBJ_10 /* ReusableMultiple+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableMultiple+Rx.swift"; sourceTree = "<group>"; };
 		OBJ_11 /* ReusableSingle+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableSingle+Rx.swift"; sourceTree = "<group>"; };
 		OBJ_14 /* RxInstantiateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxInstantiateTests.swift; sourceTree = "<group>"; };
-		OBJ_15 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		OBJ_15 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		OBJ_16 /* SingleCellTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCellTableViewController.swift; sourceTree = "<group>"; };
 		OBJ_17 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = SOURCE_ROOT; };
 		OBJ_20 /* RxInstantiate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxInstantiate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +111,7 @@
 			buildActionMask = 0;
 			files = (
 				EB4FDE781F0A2B6C00F12D19 /* Instantiate.framework in Frameworks */,
+				D2D46D431F90BF0500BB43CA /* Differentiator.framework in Frameworks */,
 				EB122D791F0B693200B1AA04 /* EnumConvertible.framework in Frameworks */,
 				EB4FDE791F0A2B6C00F12D19 /* RxCocoa.framework in Frameworks */,
 				EB4FDE7A1F0A2B6C00F12D19 /* RxDataSources.framework in Frameworks */,
@@ -125,6 +134,7 @@
 		EB4FDE731F0A2B6C00F12D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2D46D421F90BEF900BB43CA /* Differentiator.framework */,
 				EB122D781F0B693200B1AA04 /* EnumConvertible.framework */,
 				EB4FDE7E1F0A2B7600F12D19 /* InstantiateStandard.framework */,
 				EB4FDE741F0A2B6C00F12D19 /* Instantiate.framework */,
@@ -147,14 +157,16 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_14 /* RxInstantiateTests.swift */,
-				EB4FDE6E1F0A2B1700F12D19 /* LabelCell.xib */,
-				EB5C8A761F176AFB00A3740D /* SwitchCell.xib */,
-				EB6FD6751F176E0B0069220A /* SliderCell.xib */,
+				EB4FDE6E1F0A2B1700F12D19 /* LabelTableViewCell.xib */,
+				D2D46D451F90C4C800BB43CA /* LabelCollectionViewCell.xib */,
+				EB5C8A761F176AFB00A3740D /* SwitchCollectionViewCell.xib */,
+				EB6FD6751F176E0B0069220A /* SliderCollectionViewCell.xib */,
 				EB4FDE6F1F0A2B1700F12D19 /* SingleCellTableViewController.storyboard */,
 				EB6FD67A1F17707A0069220A /* MultipleCellTableViewController.storyboard */,
-				OBJ_15 /* LabelCell.swift */,
-				EB5C8A771F176B1E00A3740D /* SwitchCell.swift */,
-				EB6FD6761F176E2F0069220A /* SliderCell.swift */,
+				OBJ_15 /* LabelTableViewCell.swift */,
+				D2D46D461F90C4ED00BB43CA /* LabelCollectionViewCell.swift */,
+				EB5C8A771F176B1E00A3740D /* SwitchCollectionViewCell.swift */,
+				EB6FD6761F176E2F0069220A /* SliderCollectionViewCell.swift */,
 				OBJ_16 /* SingleCellTableViewController.swift */,
 				EB6FD6781F176EEC0069220A /* MultipleCellTableViewController.swift */,
 			);
@@ -269,10 +281,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB6FD67B1F17707A0069220A /* MultipleCellTableViewController.storyboard in Resources */,
-				EB4FDE701F0A2B1700F12D19 /* LabelCell.xib in Resources */,
-				EB6FD67C1F1774390069220A /* SliderCell.xib in Resources */,
+				D2D46D491F90C5D200BB43CA /* LabelCollectionViewCell.xib in Resources */,
+				EB4FDE701F0A2B1700F12D19 /* LabelTableViewCell.xib in Resources */,
+				EB6FD67C1F1774390069220A /* SliderCollectionViewCell.xib in Resources */,
 				EB4FDE711F0A2B1700F12D19 /* SingleCellTableViewController.storyboard in Resources */,
-				EB5C8A7A1F176B2900A3740D /* SwitchCell.xib in Resources */,
+				EB5C8A7A1F176B2900A3740D /* SwitchCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,10 +325,11 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_37 /* RxInstantiateTests.swift in Sources */,
-				EB6FD6771F176E2F0069220A /* SliderCell.swift in Sources */,
-				EB5C8A791F176B2700A3740D /* SwitchCell.swift in Sources */,
+				EB6FD6771F176E2F0069220A /* SliderCollectionViewCell.swift in Sources */,
+				D2D46D481F90C50400BB43CA /* LabelCollectionViewCell.swift in Sources */,
+				EB5C8A791F176B2700A3740D /* SwitchCollectionViewCell.swift in Sources */,
 				EB6FD6791F176EEC0069220A /* MultipleCellTableViewController.swift in Sources */,
-				OBJ_38 /* LabelCell.swift in Sources */,
+				OBJ_38 /* LabelTableViewCell.swift in Sources */,
 				OBJ_39 /* SingleCellTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,7 +406,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -448,7 +462,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;

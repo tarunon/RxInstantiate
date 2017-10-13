@@ -8,20 +8,20 @@ class RxInstantiateTests: XCTestCase {
         let dependency = SingleCellTableViewController.Dependency(
             title: "TestTitle",
             dataSources: [
-                LabelCell.Dependency(
+                LabelTableViewCell.Dependency(
                     color: .black,
                     text: .string("Hello")
                 ),
-                LabelCell.Dependency(
+                LabelTableViewCell.Dependency(
                     color: .red,
-                    text: .attributedString(NSAttributedString(string: "White Text", attributes: [NSForegroundColorAttributeName: UIColor.white]))
+                    text: .attributedString(NSAttributedString(string: "White Text", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white]))
                 )
             ]
         )
         let viewController = SingleCellTableViewController(with: dependency)
         _ = viewController.view // load view
         XCTAssertEqual(viewController.title, dependency.title)
-        let cells = viewController.tableView.visibleCells.flatMap { $0 as? LabelCell }
+        let cells = viewController.tableView.visibleCells.flatMap { $0 as? LabelTableViewCell }
         XCTAssertEqual(cells[0].backgroundColor, dependency.dataSources[0].color)
         XCTAssertEqual(cells[0].label.text, dependency.dataSources[0].text.string)
         XCTAssertEqual(cells[1].backgroundColor, dependency.dataSources[1].color)
@@ -41,9 +41,11 @@ class RxInstantiateTests: XCTestCase {
         )
         let viewController = MultipleCellTableViewController(with: dependency)
         _ = viewController.view // load view
-        let labelCell = viewController.tableView.visibleCells[0] as! LabelCell
-        let switchCell = viewController.tableView.visibleCells[1] as! SwitchCell
-        let sliderCell = viewController.tableView.visibleCells[2] as! SliderCell
+        viewController.collectionView.layoutIfNeeded()
+
+        let labelCell = viewController.collectionView.cellForItem(at: [0, 0]) as! LabelCollectionViewCell
+        let switchCell = viewController.collectionView.cellForItem(at: [0, 1]) as! SwitchCollectionViewCell
+        let sliderCell = viewController.collectionView.cellForItem(at: [0, 2]) as! SliderCollectionViewCell
 
         XCTAssertEqual(labelCell.label.text, "World")
         XCTAssertEqual(switchCell.switch.isOn, true)

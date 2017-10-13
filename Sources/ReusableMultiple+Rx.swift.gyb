@@ -22,6 +22,16 @@ import EnumConvertible
 
 % for viewType in viewTypes:
 extension Reactive where Base: UI${viewType}View {
+    % if viewType == "Collection":
+    private func configureHeaderFooter<X>()
+        -> (X, UICollectionView, String, IndexPath)
+        -> UICollectionReusableView
+    {
+        return { (_, collectionView, _, _) in
+            return UICollectionViewEmptyHeaderFooter()
+        }
+    }
+    % end
     % for enumNumber in enumNumbers:
     private func configureCell<${enumerateC(enumNumber)}, X, E>(for ${enumerateArgsDef(enumNumber)})
         -> (X, UI${viewType}View, IndexPath, E)
@@ -89,8 +99,11 @@ extension Reactive where Base: UI${viewType}View {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = Rx${viewType}ViewSectioned${renderType[0]}DataSource<S>()
-                dataSource.configureCell = self.configureCell(for: ${enumerateArgs(enumNumber)})
+                % if viewType == "Collection":
+                let dataSource = Rx${viewType}ViewSectioned${renderType[0]}DataSource<S>(configureCell: self.configureCell(for: ${enumerateArgs(enumNumber)}), configureSupplementaryView: self.configureHeaderFooter())
+                % elif viewType == "Table":
+                let dataSource = Rx${viewType}ViewSectioned${renderType[0]}DataSource<S>(configureCell: self.configureCell(for: ${enumerateArgs(enumNumber)}))
+                % end
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))

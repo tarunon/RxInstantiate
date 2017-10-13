@@ -72,8 +72,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1)
+                let dataSource = RxTableViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -172,8 +171,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1)
+                let dataSource = RxTableViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -298,8 +296,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2)
+                let dataSource = RxTableViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -404,8 +401,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2)
+                let dataSource = RxTableViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -540,8 +536,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3)
+                let dataSource = RxTableViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -652,8 +647,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3)
+                let dataSource = RxTableViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -798,8 +792,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3, type4)
+                let dataSource = RxTableViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3, type4))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -916,8 +909,7 @@ extension Reactive where Base: UITableView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxTableViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3, type4)
+                let dataSource = RxTableViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3, type4))
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -981,6 +973,14 @@ extension Reactive where Base: UITableView {
 }
 
 extension Reactive where Base: UICollectionView {
+    private func configureHeaderFooter<X>()
+        -> (X, UICollectionView, String, IndexPath)
+        -> UICollectionReusableView
+    {
+        return { (_, collectionView, _, _) in
+            return UICollectionViewEmptyHeaderFooter()
+        }
+    }
     private func configureCell<C0, C1, X, E>(for type0: C0.Type, _ type1: C1.Type)
         -> (X, UICollectionView, IndexPath, E)
         -> UICollectionViewCell
@@ -1047,8 +1047,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1)
+                let dataSource = RxCollectionViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -1147,8 +1146,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1)
+                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -1273,8 +1271,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2)
+                let dataSource = RxCollectionViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -1379,8 +1376,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2)
+                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -1515,8 +1511,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3)
+                let dataSource = RxCollectionViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -1627,8 +1622,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3)
+                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -1773,8 +1767,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedReloadDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3, type4)
+                let dataSource = RxCollectionViewSectionedReloadDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3, type4), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
@@ -1891,8 +1884,7 @@ extension Reactive where Base: UICollectionView {
     {
         return { (source) in
             { (configureDataSources) in
-                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>()
-                dataSource.configureCell = self.configureCell(for: type0, type1, type2, type3, type4)
+                let dataSource = RxCollectionViewSectionedAnimatedDataSource<S>(configureCell: self.configureCell(for: type0, type1, type2, type3, type4), configureSupplementaryView: self.configureHeaderFooter())
                 configureDataSources(dataSource)
                 return source
                     .bind(to: self.items(dataSource: dataSource))
