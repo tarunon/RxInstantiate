@@ -2,6 +2,16 @@ import XCTest
 import RxInstantiate
 import Instantiate
 import InstantiateStandard
+import RxSwift
+
+#if swift(>=4.1)
+#else
+extension Array {
+    func compactMap<T>(_ f: (Element) -> T?) -> [T] {
+        return flatMap(f)
+    }
+}
+#endif
 
 class RxInstantiateTests: XCTestCase {
     func testSingleCell() {
@@ -21,7 +31,7 @@ class RxInstantiateTests: XCTestCase {
         let viewController = SingleCellTableViewController(with: dependency)
         _ = viewController.view // load view
         XCTAssertEqual(viewController.title, dependency.title)
-        let cells = viewController.tableView.visibleCells.flatMap { $0 as? LabelTableViewCell }
+        let cells = viewController.tableView.visibleCells.compactMap { $0 as? LabelTableViewCell }
         XCTAssertEqual(cells[0].backgroundColor, dependency.dataSources[0].color)
         XCTAssertEqual(cells[0].label.text, dependency.dataSources[0].text.string)
         XCTAssertEqual(cells[1].backgroundColor, dependency.dataSources[1].color)

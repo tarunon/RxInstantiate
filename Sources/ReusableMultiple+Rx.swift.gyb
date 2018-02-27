@@ -44,7 +44,7 @@ extension Reactive where Base: UI${viewType}View {
         % end
     {
         return { (_, ${viewType.lower()}View, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
         % for caseNumber in range(enumNumber):
             case .case${caseNumber}(let x): return C${caseNumber}.dequeue(from: ${viewType.lower()}View, for: indexPath, with: x)
         % end

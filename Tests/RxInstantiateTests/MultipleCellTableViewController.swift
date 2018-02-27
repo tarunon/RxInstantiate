@@ -22,7 +22,7 @@ class MultipleCellTableViewController: UIViewController, RxViewProtocol {
             case `switch`(SwitchCollectionViewCell.Dependency)
             case slider(SliderCollectionViewCell.Dependency)
 
-            var asEnum: AnyEnum3<LabelCollectionViewCell.Dependency, SwitchCollectionViewCell.Dependency, SliderCollectionViewCell.Dependency> {
+            func asEnum() -> AnyEnum3<LabelCollectionViewCell.Dependency, SwitchCollectionViewCell.Dependency, SliderCollectionViewCell.Dependency> {
                 switch self {
                 case .label(let x): return .case0(x)
                 case .switch(let x): return .case1(x)

@@ -18,7 +18,7 @@ extension Reactive where Base: UITableView {
         , E.T1 == C1.Dependency
     {
         return { (_, tableView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: tableView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: tableView, for: indexPath, with: x)
             }
@@ -238,7 +238,7 @@ extension Reactive where Base: UITableView {
         , E.T2 == C2.Dependency
     {
         return { (_, tableView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: tableView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: tableView, for: indexPath, with: x)
             case .case2(let x): return C2.dequeue(from: tableView, for: indexPath, with: x)
@@ -474,7 +474,7 @@ extension Reactive where Base: UITableView {
         , E.T3 == C3.Dependency
     {
         return { (_, tableView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: tableView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: tableView, for: indexPath, with: x)
             case .case2(let x): return C2.dequeue(from: tableView, for: indexPath, with: x)
@@ -726,7 +726,7 @@ extension Reactive where Base: UITableView {
         , E.T4 == C4.Dependency
     {
         return { (_, tableView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: tableView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: tableView, for: indexPath, with: x)
             case .case2(let x): return C2.dequeue(from: tableView, for: indexPath, with: x)
@@ -993,7 +993,7 @@ extension Reactive where Base: UICollectionView {
         , E.T1 == C1.Dependency
     {
         return { (_, collectionView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: collectionView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: collectionView, for: indexPath, with: x)
             }
@@ -1213,7 +1213,7 @@ extension Reactive where Base: UICollectionView {
         , E.T2 == C2.Dependency
     {
         return { (_, collectionView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: collectionView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: collectionView, for: indexPath, with: x)
             case .case2(let x): return C2.dequeue(from: collectionView, for: indexPath, with: x)
@@ -1449,7 +1449,7 @@ extension Reactive where Base: UICollectionView {
         , E.T3 == C3.Dependency
     {
         return { (_, collectionView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: collectionView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: collectionView, for: indexPath, with: x)
             case .case2(let x): return C2.dequeue(from: collectionView, for: indexPath, with: x)
@@ -1701,7 +1701,7 @@ extension Reactive where Base: UICollectionView {
         , E.T4 == C4.Dependency
     {
         return { (_, collectionView, indexPath, item) in
-            switch item.asEnum {
+            switch item.asEnum() {
             case .case0(let x): return C0.dequeue(from: collectionView, for: indexPath, with: x)
             case .case1(let x): return C1.dequeue(from: collectionView, for: indexPath, with: x)
             case .case2(let x): return C2.dequeue(from: collectionView, for: indexPath, with: x)

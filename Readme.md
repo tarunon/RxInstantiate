@@ -2,7 +2,7 @@
 
 Useful protocols and default implementation using [RxSwift](https://github.com/ReactiveX/RxSwift), [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources) and [Instantiate](https://github.com/tarunon/Instantiate).
 
-## LazyVariable
+## LazyVariable(deprecated)
 No Error `ReplaySubject(1)` wrapper. Don't need to inital value when init `LazyVariable`, but should set value before get value.
 
 ## RxViewProtocol

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2B7FA0220453F8E0062A227 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7FA0120453F8E0062A227 /* Deprecated.swift */; };
+		D2B7FA042045403D0062A227 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7FA032045403D0062A227 /* ViewModel.swift */; };
 		D2D46D431F90BF0500BB43CA /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D46D421F90BEF900BB43CA /* Differentiator.framework */; };
 		D2D46D441F90C3B700BB43CA /* Differentiator.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2D46D421F90BEF900BB43CA /* Differentiator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2D46D481F90C50400BB43CA /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D46D461F90C4ED00BB43CA /* LabelCollectionViewCell.swift */; };
@@ -31,8 +33,6 @@
 		EB6FD6791F176EEC0069220A /* MultipleCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FD6781F176EEC0069220A /* MultipleCellTableViewController.swift */; };
 		EB6FD67B1F17707A0069220A /* MultipleCellTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6FD67A1F17707A0069220A /* MultipleCellTableViewController.storyboard */; };
 		EB6FD67C1F1774390069220A /* SliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6FD6751F176E0B0069220A /* SliderCollectionViewCell.xib */; };
-		OBJ_27 /* Injectable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* Injectable+Rx.swift */; };
-		OBJ_28 /* LazyVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* LazyVariable.swift */; };
 		OBJ_29 /* ReusableMultiple+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ReusableMultiple+Rx.swift */; };
 		OBJ_30 /* ReusableSingle+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* ReusableSingle+Rx.swift */; };
 		OBJ_37 /* RxInstantiateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* RxInstantiateTests.swift */; };
@@ -71,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D2B7FA0120453F8E0062A227 /* Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
+		D2B7FA032045403D0062A227 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D2D46D421F90BEF900BB43CA /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		D2D46D451F90C4C800BB43CA /* LabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewCell.xib; sourceTree = "<group>"; };
 		D2D46D461F90C4ED00BB43CA /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -97,12 +99,9 @@
 		OBJ_14 /* RxInstantiateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxInstantiateTests.swift; sourceTree = "<group>"; };
 		OBJ_15 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		OBJ_16 /* SingleCellTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCellTableViewController.swift; sourceTree = "<group>"; };
-		OBJ_17 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = SOURCE_ROOT; };
 		OBJ_20 /* RxInstantiate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxInstantiate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_21 /* RxInstantiateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RxInstantiateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_8 /* Injectable+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injectable+Rx.swift"; sourceTree = "<group>"; };
-		OBJ_9 /* LazyVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyVariable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +191,6 @@
 				EBC19E261F0B6D4F00895ADF /* LICENSE */,
 				OBJ_7 /* Sources */,
 				OBJ_12 /* Tests */,
-				OBJ_17 /* Carthage */,
 				OBJ_19 /* Products */,
 				EB4FDE731F0A2B6C00F12D19 /* Frameworks */,
 			);
@@ -201,8 +199,8 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* Injectable+Rx.swift */,
-				OBJ_9 /* LazyVariable.swift */,
+				D2B7FA0120453F8E0062A227 /* Deprecated.swift */,
+				D2B7FA032045403D0062A227 /* ViewModel.swift */,
 				OBJ_10 /* ReusableMultiple+Rx.swift */,
 				OBJ_11 /* ReusableSingle+Rx.swift */,
 				EB4FDE981F0A44EE00F12D19 /* ReusableMultiple+Rx.swift.gyb */,
@@ -313,9 +311,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_27 /* Injectable+Rx.swift in Sources */,
-				OBJ_28 /* LazyVariable.swift in Sources */,
+				D2B7FA0220453F8E0062A227 /* Deprecated.swift in Sources */,
 				OBJ_29 /* ReusableMultiple+Rx.swift in Sources */,
+				D2B7FA042045403D0062A227 /* ViewModel.swift in Sources */,
 				OBJ_30 /* ReusableSingle+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
